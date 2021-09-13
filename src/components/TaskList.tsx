@@ -15,15 +15,27 @@ export function TaskList() {
   const [newTaskTitle, setNewTaskTitle] = useState('');
 
   function handleCreateNewTask() {
-    // Crie uma nova task com um id random, não permita criar caso o título seja vazio.
+    if(!newTaskTitle) return; // Se a tarefa não tiver nome, não faz nada
+    const id = Math.round(Math.random() * Number.MAX_SAFE_INTEGER); //Números aleatórios
+    const newTask = { //Criando nova tarefa
+      id: id,
+      title: newTaskTitle,
+      isComplete: false,
+    };
+    setTasks([...tasks,newTask]); //O spread operator serve para adicionar um novo array ao array original
+    setNewTaskTitle('');
   }
 
   function handleToggleTaskCompletion(id: number) {
-    // Altere entre `true` ou `false` o campo `isComplete` de uma task com dado ID
+    const index = tasks.findIndex(tasks => tasks.id === id); //Pega o index da tarefa que foi clicada
+    tasks[index].isComplete = !tasks[index].isComplete; //Troca o valor de isComplete
+    setTasks([...tasks]); //Atualiza o array
   }
 
   function handleRemoveTask(id: number) {
-    // Remova uma task da listagem pelo ID
+    const index = tasks.findIndex(tasks => tasks.id === id); //Pega o index da tarefa que foi clicada
+    tasks.splice(index,1); //Remove a tarefa do array
+    setTasks([...tasks]); //Atualiza o array
   }
 
   return (
