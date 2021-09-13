@@ -16,11 +16,14 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx']
   },
   devServer: {
-    contentBase: path.resolve(__dirname, 'public'),
+    static: path.resolve(__dirname, 'public'),
     hot: true,
+    port: 3000,
   },
   plugins: [
-    isDevelopment && new ReactRefreshWebpackPlugin(),  
+    isDevelopment && new ReactRefreshWebpackPlugin({
+      overlay: false,
+    }),  
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public', 'index.html')
     })
