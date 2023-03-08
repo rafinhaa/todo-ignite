@@ -16,8 +16,8 @@ Primeiro desafio da trilha de React do Ignite da Rocketseat. Nesse  projeto é c
 ## 🏁 How to run the project
 #### Clone the repository
 ```bash
-git clone https://github.com/rafinhaa/ignite-reactjs-desafio-02
-cd ignite-desafio-02
+git clone https://github.com/rafinhaa/todo-ignite
+cd todo-ignite
 ```
 
 #### Install dependencies
